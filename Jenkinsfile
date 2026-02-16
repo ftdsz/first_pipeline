@@ -6,6 +6,5 @@ pipeLine{
                 echo "Rachely & Ayala"
             }
         }
-    }
-    }
+   }
 }
