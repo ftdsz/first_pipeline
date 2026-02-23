@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                echo '${App}'
+                echo "${App}"
                 bat 'python Build/Build_scrip.py'
             }
         }
