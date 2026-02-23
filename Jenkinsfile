@@ -5,6 +5,13 @@ pipeline{
             steps{
                 echo "Rachely & Ayala"
             }
+
+        }
+         stage("oneStage"){
+            steps{
+                echo "Tamar & Ayala"
+            }
+
         }
    }
 }
