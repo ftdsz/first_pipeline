@@ -1,10 +1,14 @@
 pipeline {
     agent any
+    enivronment {
+        App="staging"
+    }
 
     stages {
         stage('Build') {
             steps {
                 echo 'Building...'
+                echo '${App}'
                 bat 'python Build/Build_scrip.py'
             }
         }
