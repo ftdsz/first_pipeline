@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    options {
+        timeout(time: 1, unit: 'SECONDS')
+    }
+
+    environment {
+        USER_DETAILS = credentials('my-git-creds')
+        PYTHONPATH = "."
+        PROJECT_NAME = "First_Pipeline"
+    }
+
+    stages {
+        stage('Initialize') {
+            steps {
+                echo "Starting build for project: ${env.PROJECT_NAME}"
+                echo "Running as user: ${env.USER_DETAILS_USR}"
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                bat 'python Build/Build_scrip.py'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                bat 'python test/testMain.py'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                bat 'python deploy/deploy_script.py'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'The pipeline finished successfully!'
+        }
+        aborted {
+            echo 'The pipeline was aborted (maybe because of the 1s timeout).'
+        }
+    }
+}
