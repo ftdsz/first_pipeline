@@ -1,16 +1,17 @@
 pipeline{
   agent any
     stages{
-        stage("oneStage"){
-            steps{
-                echo "Rachely & Ayala"
-            }
+       stage("Rachely and Ayala"){
+    steps{
+        echo "Rachely & Ayala"
+    }
+}
 
-        }
-         stage("oneStage"){
+        stage("Tamar and Ayala"){
             steps{
-                echo "Tamar & Ayala"
-            }
+        echo "Tamar & Ayala"
+    }
+}
 
         }
    }
